@@ -5,6 +5,7 @@ public class test {
     public static void main(String[] args) throws IOException
     {
         //кладем данные в строку
+        int test=1;
         StringBuilder sb = new StringBuilder();
         sb.append("Lena").append('\n');
         sb.append("Olya").append('\n');
