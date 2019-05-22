@@ -7660,3 +7660,41 @@
 2019-05-22 15:05:24 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
 2019-05-22 15:06:24 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
 2019-05-22 15:06:24 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-05-22 15:07:24 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-05-22 15:07:24 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-05-22 15:08:24 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-05-22 15:08:24 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-05-22 15:09:24 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-05-22 15:09:24 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-05-22 15:10:24 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-05-22 15:10:24 INFO  ApacheHttpClient.sendEvent(518) - responseCode = 200
+2019-05-22 15:14:53 INFO  PluginTasksProjectComponent.projectClosing(188) - ---------- Project closed ----------
+
+2019-05-22 15:14:53 INFO  PluginTasksProjectComponent.projectClosing(188) - ---------- Project closed ----------
+
+2019-05-22 15:14:53 INFO  ApacheHttpClient.getTask(471) - responseCode = 200
+2019-05-22 15:14:53 INFO  ApacheHttpClient.getTask(471) - responseCode = 200
+2019-05-22 15:15:50 INFO  PluginTasksProjectComponent.projectOpened(77) - ---------- Project opened ----------
+2019-05-22 15:15:50 INFO  PluginTasksProjectComponent.projectOpened(77) - ---------- Project opened ----------
+2019-05-22 15:15:50 INFO  PluginTasksProjectComponent.projectOpened(77) - ---------- Project opened ----------
+2019-05-22 15:15:50 INFO  PluginTasksProjectComponent.projectOpened(78) - ---------- Version 3.30 ----------
+
+2019-05-22 15:15:50 INFO  PluginTasksProjectComponent.projectOpened(78) - ---------- Version 3.30 ----------
+
+2019-05-22 15:15:50 INFO  PluginTasksProjectComponent.projectOpened(78) - ---------- Version 3.30 ----------
+
+2019-05-22 15:15:52 INFO  ApacheHttpClient.isSessionAppropriateWithSecretKey(585) - Waiting for server response.
+2019-05-22 15:15:52 INFO  ApacheHttpClient.isSessionAppropriateWithSecretKey(585) - Waiting for server response.
+2019-05-22 15:15:52 INFO  ApacheHttpClient.isSessionAppropriateWithSecretKey(585) - Waiting for server response.
+2019-05-22 15:15:52 INFO  ApacheHttpClient.refreshUserInfo(293) - responseCode = 200
+2019-05-22 15:15:52 INFO  ApacheHttpClient.refreshUserInfo(293) - responseCode = 200
+2019-05-22 15:15:52 INFO  ApacheHttpClient.refreshUserInfo(293) - responseCode = 200
+2019-05-22 15:15:52 INFO  ApacheHttpClient.refreshUserInfo(299) - User information received.
+2019-05-22 15:15:52 INFO  ApacheHttpClient.refreshUserInfo(299) - User information received.
+2019-05-22 15:15:52 INFO  ApacheHttpClient.refreshUserInfo(299) - User information received.
+2019-05-22 15:15:52 INFO  ApacheHttpClient.startGA(35) - GAService started.
+2019-05-22 15:15:52 INFO  ApacheHttpClient.startGA(35) - GAService started.
+2019-05-22 15:15:52 INFO  ApacheHttpClient.startGA(35) - GAService started.
+2019-05-22 15:15:52 INFO  AbstractRestApiClient.startService(71) - EventsService started.
+2019-05-22 15:15:52 INFO  AbstractRestApiClient.startService(71) - EventsService started.
+2019-05-22 15:15:52 INFO  AbstractRestApiClient.startService(71) - EventsService started.
