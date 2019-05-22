@@ -7,7 +7,7 @@ public class test {
         //кладем данные в строку
         int test=1;
         StringBuilder sb = new StringBuilder();
-        sb.append("Lena").append('\n');
+        sb.append("Lena111111").append('\n');
         sb.append("Olya").append('\n');
         sb.append("Anya").append('\n');
         String data = sb.toString();
