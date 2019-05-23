@@ -37,7 +37,14 @@ public class Solution {
 
         public HasHeight castToHasHeight() {
 
-            return Math.abs(point1.getY() - point2.getY());
+            class a implements HasHeight{
+
+                @Override
+                public double getHeight() {
+                    return Math.abs(point1.getY() - point2.getY());
+                }
+            }
+            return new a();
         }
 
         public HasWidth castToHasWidth() {
