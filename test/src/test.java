@@ -1,40 +1,17 @@
 
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class test {
-    public static void main(String[] args) throws IOException
-    {
-        //кладем данные в строку
-        int test=1;
-        StringBuilder sb = new StringBuilder();
-        sb.append("Lena").append('\n');
-        sb.append("Olya").append('\n');
-        sb.append("Anya").append('\n');
-        String data = sb.toString();
+    public static void main(String[] args) throws IOException, ParseException {
 
-        //Оборачиваем строку в класс ByteArrayInputStream
-        InputStream is = new ByteArrayInputStream(data.getBytes());
+           // String stringDate = "15/04/1990";
+            Date date = new SimpleDateFormat("dd/MM/yyyy").parse("15/04/1990");
+            System.out.println("Date is : " + date);
+        System.out.println(new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH).format(date));
 
-        //подменяем in
-       // System.setIn(is);
-
-        //вызываем обычный метод, который не подозревает о наших манипуляциях
-        readAndPrintLine();
-    }
-
-    public static void readAndPrintLine() throws IOException
-    {
-        InputStreamReader isr = new InputStreamReader(System.in);
-        BufferedReader reader = new BufferedReader(isr);
-
-        while (true)
-        {
-            String line = reader.readLine();
-            if (line == null) break;
-            System.out.println(line);
-        }
-
-        reader.close();
-        isr.close();
     }
 }

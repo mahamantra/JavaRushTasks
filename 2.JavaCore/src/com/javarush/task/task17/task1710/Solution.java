@@ -19,27 +19,30 @@ public class Solution {
     }
 
     public static void main(String[] args) throws ParseException {
-        Scanner scan = new Scanner(System.in);
-        String s=scan.nextLine();
-        System.out.println(s);
+       // Scanner scan = new Scanner(System.in);
+      //  String s=scan.nextLine();
+        String s="-c Миронов м 15/04/1990";
+       // System.out.println(s);
 
         String[] data=s.split(" ");
 
         for (int i=data.length-1; i >=0; i--) {
-            System.out.println("String["+i+"]= "+data[i]);
+           // System.out.println("String["+i+"]= "+data[i]);
         }
 
         if (data[0].equals("-c")){
-            System.out.println(data[0]);
-            DateFormat date= new SimpleDateFormat("dd-MMM-yyyy",Locale.ENGLISH);
-            Date nDate=date.parse(data[3]);
+           // System.out.println(data[0]);
+            Date date = new SimpleDateFormat("dd/MM/yyyy",Locale.ENGLISH).parse(data[3]);
 
-            allPeople.add(Person.createFemale(data[1],nDate));
+            if (data[2].equals("м")) System.out.println(allPeople.add(Person.createMale(data[1],date)));
+                else  allPeople.add(Person.createFemale(data[1],date));
+
+            System.out.println("id= "+(allPeople.size()-1));
         }
 
         for (Person a:allPeople
              ) {
-            System.out.println(a.getSex()+a.getBirthDate().toString()+a.getName());
+            System.out.print(a.getSex()+" "+a.getName()+" ");
             SimpleDateFormat DateFormat=new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
             String date=DateFormat.format(a.getBirthDate());
             System.out.println(date);
