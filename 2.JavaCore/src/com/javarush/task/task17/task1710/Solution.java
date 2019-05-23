@@ -2,6 +2,7 @@ package com.javarush.task.task17.task1710;
 
 import java.io.InputStreamReader;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -17,7 +18,7 @@ public class Solution {
         allPeople.add(Person.createMale("Петров Петр", new Date()));  //сегодня родился    id=1
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         Scanner scan = new Scanner(System.in);
         String s=scan.nextLine();
         System.out.println(s);
@@ -30,10 +31,10 @@ public class Solution {
 
         if (data[0].equals("-c")){
             System.out.println(data[0]);
-            SimpleDateFormat DateFormat=new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
-            String date=DateFormat.format(data[3]);
+            DateFormat date= new SimpleDateFormat("dd-MMM-yyyy",Locale.ENGLISH);
+            Date nDate=date.parse(data[3]);
 
-            allPeople.add(Person.createFemale(data[1],new Date(date)));
+            allPeople.add(Person.createFemale(data[1],nDate));
         }
 
         for (Person a:allPeople
