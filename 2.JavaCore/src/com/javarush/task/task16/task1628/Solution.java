@@ -8,11 +8,12 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Solution {
-    public static volatile AtomicInteger countReadStrings = new AtomicInteger(0);
+    public static volatile AtomicInteger readStringCount = new AtomicInteger(0);
     public static volatile BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws IOException {
         //read count of strings
+       // System.out.println("input count");
         int count = Integer.parseInt(reader.readLine());
 
         //init threads
@@ -24,7 +25,7 @@ public class Solution {
         consolReader2.start();
         consolReader3.start();
 
-        while (count > countReadStrings.get()) {
+        while (count > readStringCount.get()) {
         }
 
         consolReader1.interrupt();
@@ -41,15 +42,27 @@ public class Solution {
         private List<String> result = new ArrayList<String>();
 
         public void run() {
+
             while (!isInterrupted()){
                 try {
+
+                    synchronized (reader){
+                    if (reader.ready()){
+
+                       // System.out.println(currentThread().getName());
                     result.add(reader.readLine());
-                    countReadStrings.incrementAndGet();
+                        readStringCount.incrementAndGet();
+                        System.out.println(readStringCount);}
+                    }
+
+
 
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
             }
+
         }
 
         @Override
