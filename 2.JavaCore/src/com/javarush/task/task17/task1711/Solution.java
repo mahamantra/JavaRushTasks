@@ -24,21 +24,22 @@ public class Solution {
 
         System.out.println(data.length);
         System.out.println("length "+data.length/3);
+        switch (args[0]) {
 
-        if (data[0].equals("-c")){
+            case "-c": {
 
-            for (int i = 0; 2 < data.length-i; i+=3) {
+                for (int i = 0; 2 < data.length - i; i += 3) {
 
-                System.out.println("i= "+i);
-                Date date = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(data[3+i]);
+                        System.out.println("i= " + i);
+                        Date date = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(data[3 + i]);
 
-                if (data[2+i].equals("м")) allPeople.add(Person.createMale(data[1+i], date));
-                else allPeople.add(Person.createFemale(data[1+i], date));
+                        if (data[2 + i].equals("м")) allPeople.add(Person.createMale(data[1 + i], date));
+                        else allPeople.add(Person.createFemale(data[1 + i], date));
 
-                System.out.println((allPeople.size() - 1));
+                        System.out.println((allPeople.size() - 1));
+                }
+
             }
-        }
-
         if (data[0].equals("-u")){
 
 
@@ -58,6 +59,8 @@ public class Solution {
             SimpleDateFormat DateFormat=new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
             Person person=allPeople.get(Integer.parseInt(data[1]));
             System.out.println(String.format("%s %s %s",person.getName(),(person.getSex().toString()=="MALE"?"м":"ж"),DateFormat.format(person.getBirthDate())));
+
+        }
 
         }
 
