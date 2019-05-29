@@ -1,6 +1,9 @@
 package com.javarush.task.task20.task2013;
 
-import java.io.*;
+import java.io.Externalizable;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectOutput;
 import java.util.List;
 
 /* 
@@ -21,7 +24,8 @@ public class Solution {
             this.age = age;
         }
 
-        public Person(){}
+        public Person() {
+        }
 
         public void setMother(Person mother) {
             this.mother = mother;
@@ -39,27 +43,24 @@ public class Solution {
         public void writeExternal(ObjectOutput out) throws IOException {
             out.writeObject(mother);
             out.writeObject(father);
-            out.writeChars(firstName);
-            out.writeChars(lastName);
+            out.writeObject(firstName);
+            out.writeObject(lastName);
             out.writeInt(age);
             out.writeObject(children);
         }
 
         @Override
         public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-            firstName = in.readLine();
-            lastName = in.readLine();
-            father = (Person)in.readObject();
             mother = (Person)in.readObject();
+            father = (Person)in.readObject();
+            firstName = (String) in.readObject();
+            lastName = (String) in.readObject();
             age = in.readInt();
             children = (List)in.readObject();
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream("f1"));
-        Person person=new Person();
-        person.writeExternal(oos);
+    public static void main(String[] args) {
 
     }
 }
