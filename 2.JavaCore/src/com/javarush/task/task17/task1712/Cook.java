@@ -5,8 +5,9 @@ public class Cook implements Runnable {
 
     @Override
     public void run() {
-        boolean needToWait;
-        while (continueWorking || needToCookOrders()) {
+        boolean needToWait;//нуждается в отдыхе
+
+        while (continueWorking || needToCookOrders()) {//если есть заказы
             try {
                 synchronized (this) {
                     needToWait = !needToCookOrders();
@@ -25,14 +26,15 @@ public class Cook implements Runnable {
 
     private boolean needToCookOrders() {
         return !Manager.getInstance().getOrderQueue().isEmpty();
-    }
+    }//есть заказы
 
     private void cook() throws InterruptedException {
-        Manager manager = Manager.getInstance();
+        Manager manager = Manager.getInstance();//получаем ссылку на менеджера
         Order order = manager.getOrderQueue().poll();      // повар берет заказ из очереди
         System.out.println(String.format("Заказ будет готовиться %d мс для стола №%d", order.getTime(), order.getTableNumber()));
         Thread.sleep(order.getTime());     // готовим блюдо
         Dishes dishes = new Dishes(order.getTableNumber());       //  это готовое блюдо
+        manager.getDishesQueue().add(dishes);
         System.out.println(String.format("Заказ для стола №%d готов", dishes.getTableNumber()));
     }
 }
