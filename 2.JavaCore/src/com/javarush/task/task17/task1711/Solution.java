@@ -20,52 +20,63 @@ public class Solution {
     }
 
     public static void main(String[] args) throws ParseException {
-        String[] data=args;
 
-        System.out.println(data.length);
-        System.out.println("length "+data.length/3);
+//        System.out.println(args.length);
+//        System.out.println("length "+args.length/3);
+
         switch (args[0]) {
 
             case "-c": {
-
-                for (int i = 0; 2 < data.length - i; i += 3) {
-
-                        System.out.println("i= " + i);
-                        Date date = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(data[3 + i]);
-
-                        if (data[2 + i].equals("м")) allPeople.add(Person.createMale(data[1 + i], date));
-                        else allPeople.add(Person.createFemale(data[1 + i], date));
-
+                synchronized (allPeople){
+                    for (int i = 0; 2 < args.length - i; i += 3) {
+                        // System.out.println("i= " + i);
+                        Date date = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(args[3 + i]);
+                        if (args[2 + i].equals("м")) allPeople.add(Person.createMale(args[1 + i], date));
+                        else allPeople.add(Person.createFemale(args[1 + i], date));
                         System.out.println((allPeople.size() - 1));
+                    }
                 }
-
+                break;
             }
-        if (data[0].equals("-u")){
 
+            case "-u": {
+                synchronized (allPeople) {
+                    for (int i = 0; 2 < args.length - i; i += 4) {
+                        Date date = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(args[4 + i]);
+                        if (args[3 + i].equals("м"))
+                            allPeople.set(Integer.parseInt(args[1 + i]), Person.createMale(args[2 + i], date));
+                        else allPeople.set(Integer.parseInt(args[1 + i]), Person.createFemale(args[2 + i], date));
+                    }
+                }break;
+            }
 
-            Date date = new SimpleDateFormat("dd/MM/yyyy",Locale.ENGLISH).parse(data[4]);
+            case "-d": {
+                synchronized (allPeople) {
+                    for (int i = 1; 0 < args.length - i; i++) {
 
-            if (data[3].equals("м")) allPeople.set(Integer.parseInt(data[1]),Person.createMale(data[2],date));
-            else  allPeople.set(Integer.parseInt(data[1]),Person.createFemale(data[1],date));
+                        allPeople.get(Integer.parseInt(args[i])).setBirthDate(null);
+                        allPeople.get(Integer.parseInt(args[i])).setName(null);
+                        allPeople.get(Integer.parseInt(args[i])).setSex(null);
+                    }
+                }break;
+            }
 
+            case "-i": {
+                synchronized (allPeople) {
+                    SimpleDateFormat DateFormat = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+
+                    for (int i = 1; 0 < args.length - i; i++) {
+                        Person person = allPeople.get(Integer.parseInt(args[i]));
+                        System.out.println(String.format("%s %s %s", person.getName(), (person.getSex().toString() == "MALE" ? "м" : "ж"), DateFormat.format(person.getBirthDate())));
+                    }
+                }break;
+            }
         }
 
-        if (data[0].equals("-d")){allPeople.get(Integer.parseInt(data[1])).setBirthDate(null);
-            allPeople.get(Integer.parseInt(data[1])).setName(null);
-            allPeople.get(Integer.parseInt(data[1])).setSex(null);
-        }
 
-        if (data[0].equals("-i")) {
-            SimpleDateFormat DateFormat=new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
-            Person person=allPeople.get(Integer.parseInt(data[1]));
-            System.out.println(String.format("%s %s %s",person.getName(),(person.getSex().toString()=="MALE"?"м":"ж"),DateFormat.format(person.getBirthDate())));
 
-        }
-
-        }
-
-        for (Person person :allPeople ) {
-            System.out.println(person.getName()+person.getSex()+person.getBirthDate());
-        }
+//        for (Person person :allPeople ) {
+//            System.out.println(person.getName()+person.getSex()+person.getBirthDate());
+//        }
     }
 }
