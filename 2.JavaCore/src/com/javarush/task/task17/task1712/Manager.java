@@ -6,9 +6,9 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Manager {      //singleton
-    private static Manager ourInstance = new Manager();
+    private static Manager ourInstance = new Manager();//создаем менеджера
 
-    private final List<Table> restaurantTables = new ArrayList<Table>(10);
+    private final List<Table> restaurantTables = new ArrayList<Table>(10); //создаем список столов
     private int currentIndex = 0;
 
     private final Queue<Order> orderQueue = new ConcurrentLinkedQueue<Order>();        // очередь с заказами
@@ -16,7 +16,7 @@ public class Manager {      //singleton
 
     public synchronized static Manager getInstance() {
         return ourInstance;
-    }
+    } //гетер Менеджера
 
     private Manager() {               // создаем 10 столов
         for (int i = 0; i < 10; i++) {
@@ -30,11 +30,12 @@ public class Manager {      //singleton
         return table;
     }
 
-    public Queue<Order> getOrderQueue() {
+    public Queue<Order> getOrderQueue() {//получить список заказов
         return orderQueue;
     }
 
-    public Queue<Dishes> getDishesQueue() {
+    public Queue<Dishes> getDishesQueue() {//получить список готовых блюд
+
         return dishesQueue;
     }
 }
