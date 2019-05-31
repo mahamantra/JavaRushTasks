@@ -16,7 +16,7 @@ public class Solution {
         private int age;
         private Person mother;
         private Person father;
-        private List<Person> children;
+        private List children;
 
         public Person(String firstName, String lastName, int age) {
             this.firstName = firstName;
