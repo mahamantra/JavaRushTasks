@@ -5,43 +5,53 @@ package com.javarush.task.task18.task1827;
 */
 
 import java.io.*;
+import java.util.Scanner;
 
 public class Solution {
     public static void main(String[] args) throws Exception {
+       Writer writer=new FileWriter(new Scanner(System.in).nextLine(),true);
+       BufferedWriter bufferedWriter=new BufferedWriter(writer);
 
-        Writer writer=new FileWriter("f1",true);
-        BufferedWriter bufferedWriter=new BufferedWriter(writer);
+       if (args.length!=0) {
+           StringBuilder quantity = new StringBuilder(args[args.length - 1]);
+           StringBuilder price = new StringBuilder(args[args.length - 2]);
+           StringBuilder productName = new StringBuilder();
 
-       StringBuilder quantity=new StringBuilder( args[args.length-1]);
-       StringBuilder price=new StringBuilder( args[args.length-2]);
-       StringBuilder productName=new StringBuilder();
-
-       StringBuilder id=new StringBuilder(returnMaxID());
+           StringBuilder id = new StringBuilder(returnMaxID());
 
 
-        for (int i = 1; i <args.length-2 ; i++) {
-            productName.append(args[i]+" ");
-        }
-        productName.deleteCharAt(productName.length()-1);
+           for (int i = 1; i <= args.length - 3; i++) {
+               productName.append(args[i] + " ");
+           }
+            productName.deleteCharAt(productName.length()-1);
 
-        quantity.append(" ".repeat(4-quantity.length()));
-        price.append(" ".repeat(8-price.length()));
-        productName.append(" ".repeat(30-productName.length()));
-        id.append(" ".repeat(8-productName.length()));
+           for (int i = 0; i <(4 - quantity.length()) ; i++) {
+               quantity.append(" ");
+           }
+           for (int i = 0; i <(8 - price.length()) ; i++) {
+               price.append(" ");
+           }
+           for (int i = 0; i <(30 - productName.length()) ; i++) {
+               productName.append(" ");
+           }
 
-        System.out.println(quantity.length());
-        System.out.println(price.length());
-        System.out.println(productName.length());
+           //quantity.append(" ".repeat(4 - quantity.length()));
+           //price.append(" ".repeat(8 - price.length()));
+           //productName.append(" ".repeat(30 - productName.length()));
+           //id.append(" ".repeat(8-productName.length()));
 
-        StringBuilder data=new StringBuilder();
-        data.append(id).append(productName).append(price).append(quantity).append("\n");
+//        System.out.println(quantity.length());
+//        System.out.println(price.length());
+//        System.out.println(productName.length());
 
-        System.out.println(data);
+           StringBuilder data = new StringBuilder();
+           data.append(id).append(productName).append(price).append(quantity).append("\n");
 
-        bufferedWriter.write(data.toString());
+
+           bufferedWriter.write(data.toString());
+       }
+
         bufferedWriter.close();
-
-        returnMaxID();
 
     }
 
@@ -61,6 +71,7 @@ public class Solution {
          }
 
         max++;
+        bufferedReader.close();
 
         return String.valueOf(max);
     }
