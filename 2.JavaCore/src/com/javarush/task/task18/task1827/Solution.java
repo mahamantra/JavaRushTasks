@@ -25,13 +25,13 @@ public class Solution {
            }
             productName.deleteCharAt(productName.length()-1);
 
-           for (int i = 0; i <(4 - quantity.length()) ; i++) {
+           for (int i = 0; i <(4 - quantity.length()) ; ) {
                quantity.append(" ");
            }
-           for (int i = 0; i <(8 - price.length()) ; i++) {
+           for (int i = 0; i <(8 - price.length()) ; ) {
                price.append(" ");
            }
-           for (int i = 0; i <(30 - productName.length()) ; i++) {
+           for (int i = 0; i <(30 - productName.length()) ; ) {
                productName.append(" ");
            }
 
@@ -72,7 +72,11 @@ public class Solution {
 
         max++;
         bufferedReader.close();
+        s=String.valueOf(max);
+        for (int t = 0; t <(8 - s.length()) ; ) {
+            s=s+" ";
+        }
 
-        return String.valueOf(max);
+        return s;
     }
 }
