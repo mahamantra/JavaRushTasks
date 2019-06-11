@@ -13,15 +13,25 @@ public class Solution implements Action {
         //!!!!! Изменения могут быть тут
 
         public void someAction() {
-            new FirstClass() {
+Action action;
+            if (param>0) {
+                while (param>0) System.out.println(param--);
 
-                @Override
-                public Action getDependantAction() {
-                    super.someAction();
+                new FirstClass() {
 
-                    return null;
-                }
-            };
+                    @Override
+                    public Action getDependantAction() {
+                        super.someAction();
+
+                        return null;
+                    }
+                }.getDependantAction();
+            }
+            action=new SecondClass();
+            action.someAction();
+            System.out.println((SecondClass.SPECIFIC_ACTION_FOR_ANONYMOUS_SECOND_CLASS_PARAM+param).replaceAll("\n",""));
+
+
             //!!!!! All changes have to be here
             //!!!!! Все изменения должны быть только тут
         }
