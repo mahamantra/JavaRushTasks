@@ -15,15 +15,16 @@ public class OurUncaughtExceptionHandler implements Thread.UncaughtExceptionHand
     }
 
     protected String getFormattedStringForOtherThread(Thread t, Throwable e, String string) {
-        return null;
+
+        return String.format(string,e.toString(),e.getMessage(),t.getName());
     }
 
     protected String getFormattedStringForSecondThread(Thread t, Throwable e, String string) {
-        return null;
+        return String.format(string,e.toString(),e.getMessage(),t.getName());
     }
 
     protected String getFormattedStringForFirstThread(Thread t, Throwable e, String string) {
-        return null;
+        return String.format(string,t.getName(),e.getMessage(),e.getCause());
     }
 }
 
