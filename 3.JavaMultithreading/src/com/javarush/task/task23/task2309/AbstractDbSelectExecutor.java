@@ -11,13 +11,13 @@ public abstract class AbstractDbSelectExecutor<T extends NamedItem> {
     public abstract String getQuery();
 
     /**
-     * It's fake method
+     * This is a fake method
      *
      * @return a list of 5 fake items
      */
     public List<T> execute() {
         List<T> result = new ArrayList<>();
-        //assert the query is not null
+        //check that the query is not null
         String query = getQuery();
         if (query == null) return result;
 
@@ -27,7 +27,7 @@ public abstract class AbstractDbSelectExecutor<T extends NamedItem> {
                 T newItem = getNewInstanceOfGenericType();
                 newItem.setId(i);
                 newItem.setName(newItem.getClass().getSimpleName() + "-" + i);
-                newItem.setDescription("Got by executing '" + query + "'");
+                newItem.setDescription("Received from executing '" + query + "'");
                 result.add(newItem);
             }
         } catch (InstantiationException | IllegalAccessException e) {
@@ -37,7 +37,7 @@ public abstract class AbstractDbSelectExecutor<T extends NamedItem> {
     }
 
     //reflection
-    //you have to know that it is possible to create new instance of T (generic type) class by using its default constructor
+    //you need to know that it is possible to create a new instance of the T (generic type) class using its default constructor
     private T getNewInstanceOfGenericType() throws InstantiationException, IllegalAccessException {
         return (T) ((Class) ((ParameterizedType) this.getClass().
                 getGenericSuperclass()).getActualTypeArguments()[0]).newInstance();

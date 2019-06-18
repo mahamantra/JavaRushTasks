@@ -24,7 +24,7 @@ public class Solution {
         String[] filepart = {"change {4}", "open {2} and last {3}"};
 
         ChoiceFormat fileform = new ChoiceFormat(filelimits, filepart);
-        Format[] testFormats = {null,null, dateFormat, fileform};
+        Format[] testFormats = {null, null, dateFormat, fileform};
         MessageFormat pattform = new MessageFormat("{0}   {1} | {5} {6}");
         pattform.setFormats(testFormats);
 
@@ -43,16 +43,15 @@ public class Solution {
     public static void sort(List<Stock> list) {
         list.sort(new Comparator<Stock>() {
             public int compare(Stock stock1, Stock stock2) {
-                int result=stock1.get("name").toString().compareTo(stock2.get("name").toString());
-                if (result!=0)return result;
-                    else result=((Date) stock2.get("date")).compareTo((Date) stock1.get("date"));
-                        if (result!=0)return result;
-                            else
-                        {
-                          double s1= stock1.get("change")==null?(double)stock1.get("last")-(double)stock1.get("last"):(double)stock1.get("change");
-                          double s2= stock2.get("change")==null?(double)stock2.get("last")-(double)stock2.get("last"):(double)stock2.get("change");
-                          return  (int) (s2-s1);
-                        }
+                int result = stock1.get("name").toString().compareTo(stock2.get("name").toString());
+                if (result != 0) return result;
+                else result = ((Date) stock2.get("date")).compareTo((Date) stock1.get("date"));
+                if (result != 0) return result;
+                else {
+                    double s1 = stock1.get("change") == null ? (double) stock1.get("last") - (double) stock1.get("last") : (double) stock1.get("change");
+                    double s2 = stock2.get("change") == null ? (double) stock2.get("last") - (double) stock2.get("last") : (double) stock2.get("change");
+                    return (int) (s2 - s1);
+                }
 
 
             }

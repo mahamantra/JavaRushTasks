@@ -23,16 +23,52 @@ public class Solution {
     }
 
     public List<User> getUsers(){
-        AbstractDbSelectExecutor abs=new AbstractDbSelectExecutor() {
+
+        return new AbstractDbSelectExecutor<User>(){
             @Override
             public String getQuery() {
-                return null;
+                return "SELECT * FROM USER";
             }
-        };
-        return null;
+        }.execute();
     }
 
     public List<Location> getLocations(){
-        return null;
+
+        return new AbstractDbSelectExecutor<Location>(){
+            @Override
+            public String getQuery() {
+                return "SELECT * FROM LOCATION";
+            }
+        }.execute();
+    }
+
+    public List<Server> getServers(){
+
+        return new AbstractDbSelectExecutor<Server>(){
+            @Override
+            public String getQuery() {
+                return "SELECT * FROM SERVER";
+            }
+        }.execute();
+    }
+
+    public List<Subject> getSubjects(){
+
+        return new AbstractDbSelectExecutor<Subject>(){
+            @Override
+            public String getQuery() {
+                return "SELECT * FROM SUBJECT";
+            }
+        }.execute();
+    }
+
+    public List<Subscription> getSubscriptions(){
+
+        return new AbstractDbSelectExecutor<Subscription>(){
+            @Override
+            public String getQuery() {
+                return "SELECT * FROM SUBSCRIPTION";
+            }
+        }.execute();
     }
 }

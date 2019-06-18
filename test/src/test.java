@@ -1,35 +1,23 @@
 
-import java.io.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.text.ChoiceFormat;
+import java.text.MessageFormat;
+
 
 public class test {
-    public static void main(String[] args) throws IOException, ClassNotFoundException {
+    public static void main(String[] args) {
+        MessageFormat form = new MessageFormat("Я могу {1} {0}.");
+        int count = 2;
+        String exercise = "подтянуться";
+        Object[] testArgs = {count, exercise};
 
-        ByteArrayOutputStream arrayOutputStream=new ByteArrayOutputStream();
-        ObjectOutputStream out =new ObjectOutputStream(arrayOutputStream);
+        double[] filelimits = {0,1,2};
+        String[] filepart = {"{0} раз","{0} раза","{0} раз"};
+        ChoiceFormat fileform = new ChoiceFormat(filelimits, filepart);
+        form.setFormatByArgumentIndex(0, fileform);
 
-        Person person1=new Person("ivan",22);
-
-
-        Person person2=new Person("sveta",44);
-
-
-        out.writeObject(person1);
-        out.writeObject(person2);
-
-        ByteArrayInputStream arrayInputStream=new ByteArrayInputStream(arrayOutputStream.toByteArray());
-        ObjectInputStream in=new ObjectInputStream(arrayInputStream);
-
-       Person person3=(Person) in.readObject();
-        Person person4=(Person) in.readObject();
-
-        System.out.println(person3.name+person3.age);
-        System.out.println(person4.name+person4.age);
-
-
-
+        System.out.println(form.format(testArgs));
     }
+
+
+
 }

@@ -34,17 +34,18 @@ public class Solution {
     public synchronized String getPartOfString(String string, String threadName) {
 
         try {
-           int indexStart = string.indexOf(9)+1;
-           int indexEnd = string.lastIndexOf(9);
+            int indexStart = string.indexOf(9) + 1;
+            int indexEnd = string.lastIndexOf(9);
             return string.substring(indexStart, indexEnd);
 
         } catch (Exception e) {
-
             if (threadName.equals(FIRST_THREAD_NAME)) {
-                System.out.println("!!!!!!!! "+e.toString());
-                throw new StringForFirstThreadTooShortException(e);}
-            if (threadName.equals(SECOND_THREAD_NAME)) throw new StringForSecondThreadTooShortException();
-            throw new RuntimeException();
+                throw new StringForFirstThreadTooShortException(e);
+            }
+
+            if (threadName.equals(SECOND_THREAD_NAME)) throw new StringForSecondThreadTooShortException(e);
+
+            throw new RuntimeException(e);
 
         }
 
