@@ -13,6 +13,7 @@ public class Solution implements Thread.UncaughtExceptionHandler {
     public void uncaughtException(Thread t, Throwable e) {
 
         t.interrupt();
+        recursion(e);
         /*Throwable th = e;
         List<Throwable> list=new ArrayList<>();
 
@@ -28,6 +29,12 @@ public class Solution implements Thread.UncaughtExceptionHandler {
         }*/
 
 
+    }
+
+    public void recursion(Throwable t){
+        if (t.getCause()!=null)
+            recursion(t.getCause());
+        System.out.println(t);
     }
 
 
