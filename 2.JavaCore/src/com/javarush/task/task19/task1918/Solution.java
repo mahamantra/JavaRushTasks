@@ -10,6 +10,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class Solution {
     public static void main(String[] args) throws IOException {
@@ -31,26 +33,38 @@ public class Solution {
         List<String> listTeg = new ArrayList<>();
         List<Integer> numberOpen = new ArrayList<>();
         List<Integer> numberClose = new ArrayList<>();
+        Map<Integer,Integer > mapResult=new TreeMap<>() ;
         String s;
 
         for (int i = 0; i < stringBuilder.length(); i++) {
             i = stringBuilder.indexOf("</", i);
             if (i < 0) break;
-
             numberClose.add(i);
-            System.out.println(i);
         }
 
         for (int i = 0; i < stringBuilder.length(); i++) {
             i = stringBuilder.indexOf("<", i);
             if (i < 0) break;
-
             if (!numberClose.contains(i)) numberOpen.add(i);
-            System.out.println(i);
         }
 
-        s = stringBuilder.substring(numberOpen.get(0), numberClose.get(0));
-        System.out.println(s);
+        for (Integer i :numberOpen
+                ) {
+            mapResult.put(i,0);
+        }
+
+        for (Integer i :numberClose
+                ) {
+            mapResult.put(i,1);
+        }
+
+
+        for (:
+             ) {
+            
+        }
+        // s = stringBuilder.substring(numberOpen.get(0), numberClose.get(0));
+        // System.out.println(s);
         return listTeg;
     }
 }
