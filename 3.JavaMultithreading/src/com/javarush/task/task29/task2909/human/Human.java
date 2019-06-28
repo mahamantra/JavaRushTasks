@@ -12,20 +12,18 @@ public class Human implements Alive {
     protected int age;
     protected String name;
 
-    protected int[] size;
+    protected Size size;
 
 
-    public static final int FIRST = 1;
-    public static final int SECOND = 2;
-    public static final int THIRD = 3;
-    public static final int FOURTH = 4;
-    private int bloodGroup;
 
-    public void setBloodGroup(int code) {
-        bloodGroup = code;
+    private BloodGroup bloodGroup;
+
+    public void setBloodGroup(BloodGroup bloodGroup) {
+
+       this.bloodGroup= bloodGroup;
     }
 
-    public int getBloodGroup() {
+    public BloodGroup getBloodGroup() {
         return bloodGroup;
     }
 
@@ -45,11 +43,9 @@ public class Human implements Alive {
     }
 
 
-
     public void removeChild(Human human) {
         children.remove(human);
     }
-
 
 
     public int getAge() {
@@ -71,8 +67,9 @@ public class Human implements Alive {
     public String getPosition() {
         return "Человек";
     }
+
     public void printData() {
-        System.out.println(getPosition()+": " + name);
+        System.out.println(getPosition() + ": " + name);
     }
 
     public void live() {
@@ -86,6 +83,13 @@ public class Human implements Alive {
 
 
     public void printSize() {
-        System.out.println("Рост: " + size[0] + " Вес: " + size[1]);
+        System.out.println("Рост: " + size.height + " Вес: " + size.weight);
     }
+
+    public static class Size {
+        public int height;
+        public int weight;
+
+    }
+
 }
