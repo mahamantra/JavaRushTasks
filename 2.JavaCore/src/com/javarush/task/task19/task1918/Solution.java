@@ -12,8 +12,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Solution {
+    static String teg="span";
     public static void main(String[] args) throws IOException {
         FileReader fileReader = new FileReader("f1");
         BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -31,40 +34,36 @@ public class Solution {
 
     public static List<String> returnList(StringBuilder stringBuilder) {
         List<String> listTeg = new ArrayList<>();
-        List<Integer> numberOpen = new ArrayList<>();
-        List<Integer> numberClose = new ArrayList<>();
-        Map<Integer,Integer > mapResult=new TreeMap<>() ;
-        String s;
 
-        for (int i = 0; i < stringBuilder.length(); i++) {
-            i = stringBuilder.indexOf("</", i);
-            if (i < 0) break;
-            numberClose.add(i);
-        }
+        String s=stringBuilder.toString();
+        int j=0;
 
-        for (int i = 0; i < stringBuilder.length(); i++) {
-            i = stringBuilder.indexOf("<", i);
-            if (i < 0) break;
-            if (!numberClose.contains(i)) numberOpen.add(i);
-        }
+       while (j<s.length()) {
+           List<Integer> numberOpen = new ArrayList<>();
+           List<Integer> numberClose = new ArrayList<>();
+           for (int i = j; i < s.length(); i++) {
 
-        for (Integer i :numberOpen
-                ) {
-            mapResult.put(i,0);
-        }
+               if (s.charAt(i) == 60) {
+                   if (s.charAt(i + 1) == 47&&numberOpen.size()>0) {
+                       numberClose.add(i);
+                   } else numberOpen.add(i);
+                   if (numberClose.size() == numberOpen.size()) break;
 
-        for (Integer i :numberClose
-                ) {
-            mapResult.put(i,1);
-        }
+               }
+
+           }
+           System.out.println(numberOpen);
+           System.out.println(numberClose);
+           System.out.println(s.substring(numberOpen.get(0),numberClose.get(numberClose.size()-1)+teg.length()+3));
+           j=numberOpen.get(0)+1;
+           System.out.println(j);
+
+       }
 
 
-        for (:
-             ) {
-            
-        }
-        // s = stringBuilder.substring(numberOpen.get(0), numberClose.get(0));
-        // System.out.println(s);
+
         return listTeg;
     }
+
+
 }
